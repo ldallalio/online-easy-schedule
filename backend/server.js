@@ -6,7 +6,11 @@ const port = process.env.PORT || 5000;
 const path = require('path');
 const cors = require('cors');
 
-const whitelist = ['http://localhost:3000', 'http://localhost:5000'];
+const whitelist = [
+	'http://localhost:3000',
+	'http://localhost:5000',
+	'https://kleankingeasyschedule.herokuapp.com',
+];
 
 const corsOptions = {
 	origin: function (origin, callback) {
