@@ -1,0 +1,181 @@
+html {
+	background-image: url('https://images.unsplash.com/photo-1566041510394-cf7c8fe21800?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	margin: auto;
+	max-width: 450px;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+		Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	background-color: rgb(255, 255, 255);
+	height: 100vh;
+	box-shadow: 0px 1px 28px -5px rgba(0, 0, 0, 0.55);
+}
+
+.loginContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.loginContainer form > * {
+	margin-top: 2em;
+}
+
+.loginHeader {
+	text-align: center;
+	background-color: white;
+	/* box-shadow: 1px 5px 10px 0px rgba(0, 0, 0, 0.522); */
+	font-size: 36px;
+	padding: 0.6em;
+	border-radius: 20px;
+	width: 370px;
+	margin-top: 1em;
+}
+.loginContainer form {
+	display: flex;
+	flex-flow: column wrap;
+	width: 100%;
+	max-width: 600px;
+	justify-content: center;
+	align-items: center;
+}
+
+.loginContainer form > *,
+.loginContainer form button {
+	/* box-shadow: 1px 5px 10px 0px rgba(0, 0, 0, 0.522); */
+	border: solid 1px lightgray !important;
+	border-radius: 100px;
+	padding: 0.4em;
+	width: 370px;
+	height: 40px;
+	font-size: 18px;
+}
+
+.loginContainer form input,
+.loginContainer form input:required:focus {
+	border: none;
+	padding-left: 20px;
+}
+
+.loginSubmit {
+	background-color: white;
+	color: black;
+	height: 54px !important;
+}
+
+.loginSubmit:hover {
+	background-color: aquamarine !important;
+	color: black;
+	transition: ease-in 0.11s;
+}
+
+.loginSignUp {
+	color: black;
+	text-decoration: none;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 54px !important;
+}
+
+.loginSignUp:hover {
+	background-color: aquamarine;
+	transition: ease-in 0.11s;
+}
+
+.loginContainer form input:focus-visible {
+	outline: none;
+}
+
+.dashContainer,
+.dashContainer form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.dashContainer > *,
+.dashContainer form > * {
+	margin-bottom: 1.2em;
+}
+
+.containerHeader {
+	text-align: center;
+	background-color: white;
+	font-size: 36px;
+	padding: 0.6em;
+	border-radius: 20px;
+	width: 370px;
+	margin-top: 1em;
+}
+
+.dashContainer button,
+select {
+	border-radius: 100px;
+	padding: 0.4em;
+	width: 370px;
+	height: 40px;
+	border: none;
+	font-size: 18px;
+	background-color: white;
+	border: solid 1px lightgray;
+}
+.dashContainer button:hover {
+	border: solid 1px lightpink;
+}
+
+.dashContainer form input {
+	border: solid 1px lightgray;
+	border-radius: 100px;
+	padding-left: 1em;
+	width: 370px;
+	height: 40px;
+	font-size: 18px;
+}
+
+.dashContainer form > input {
+	border: solid 1px lightgray;
+}
+
+#chooseService button:hover {
+	border: solid 1px lightpink;
+}
+#service,
+#time {
+	width: 392px !important;
+	height: 44px !important;
+	font-weight: 300;
+}
+#chooseService {
+	margin-top: -30px;
+}
+#chooseService div {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+#chooseService div > * {
+	margin-bottom: 15px;
+}
+
+textarea {
+	border: solid 1px lightgray;
+	border-radius: 10px;
+	padding: 1em;
+}
+
+.hidden {
+	display: none !important;
+}
