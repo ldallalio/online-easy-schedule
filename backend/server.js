@@ -29,20 +29,6 @@ app.use(cors(corsOptions));
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = process.env.MONGO_URI;
 
-MongoClient.connect(uri).then((client) => {
-	console.log('Database created');
-
-	// database name
-	const db = client.db('testDB');
-
-	// collection name
-	// db.createCollection('testCol');
-	// db.collection('testCol').insertOne({
-	// 	name: 'Shelbie',
-	// 	service: 'test',
-	// });
-});
-
 // Body-parser middleware
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
@@ -53,7 +39,28 @@ app.get('/api/:userId/appointments', (req, res) => {
 });
 //GET SINGLE USER APPOINTMENTS
 app.get('/api/:userId/appointments/:appointmentId', (req, res) => {
-	res.send('Getting Single Appointment');
+	// res.send(req.params);
+	let x;
+	MongoClient.connect(uri).then((client) => {
+		console.log('Getting Single Appointment From this place');
+		try {
+			const db = client.db('testDB');
+			const col = db.collection('testCol');
+			let appointment = col.findOne({
+				serviceId: req.params.appointmentId,
+			});
+			appointment.then((i) => {
+				x = i;
+				res.send(x);
+			});
+		} catch {
+			console.log('ERROR');
+		}
+		// database name
+
+		// collection name
+		// db.createCollection('testCol');
+	});
 });
 //POST CREATE USER APPOINTMENTS
 app.post(`/api/:userId/appointments`, function (req, res) {
@@ -62,20 +69,16 @@ app.post(`/api/:userId/appointments`, function (req, res) {
 	// console.log(data);
 	res.send(data);
 	//save info to database
-	// MongoClient.connect(uri).then((client) => {
-	// 	console.log('Database created');
+	MongoClient.connect(uri).then((client) => {
+		console.log('Database Connected with API');
 
-	// 	// database name
-	// 	const db = client.db('testDB');
+		// database name
+		const db = client.db('testDB');
 
-	// 	// collection name
-	// 	// db.createCollection('testCol');
-	// 	// db.collection('testCol').insertOne({
-	// 	// 	userId,
-	// 	// 	serviceID,
-	// 	// 	serviceName,
-	// 	// });
-	// });
+		// collection name
+		// db.createCollection('testCol');
+		db.collection('testCol').insertOne(JSON.parse(data));
+	});
 });
 if (process.env.NODE_ENV === 'production') {
 	app.use(express.static(path.join(__dirname, '../build')));

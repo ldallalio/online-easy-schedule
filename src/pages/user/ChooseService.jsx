@@ -31,7 +31,9 @@ function ChooseService() {
 		// send POST request
 		await fetch(url, options)
 			.then((res) => res.text())
-			.then((res) => console.log(res));
+			.then((res) => {
+				return;
+			});
 	};
 	const onSubmit = async (e) => {
 		e.preventDefault();
@@ -71,7 +73,7 @@ function ChooseService() {
 		await checkValues();
 
 		//Save to Database
-		// navigate('/book-service', { state: { serviceId: serviceId } });
+		navigate('/book-service', { state: { serviceId: serviceId } });
 	};
 
 	const nextClick = (e) => {

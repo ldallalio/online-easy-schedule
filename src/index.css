@@ -179,3 +179,9 @@ textarea {
 .hidden {
 	display: none !important;
 }
+
+.confirmPageDiv {
+	padding: 1em;
+	margin-top: -50px;
+	text-align: center;
+}
