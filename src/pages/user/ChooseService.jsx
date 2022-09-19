@@ -17,7 +17,7 @@ function ChooseService() {
 	let userService, userTime, userDate;
 
 	const sendData = async (details) => {
-		const url = `${process.env.REACT_APP_API_URL}/api/${userId}/appointments`;
+		const url = `${process.env.REACT_APP_API_URL}api/${userId}/appointments`;
 		// post body data
 
 		// request options
