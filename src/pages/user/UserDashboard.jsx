@@ -23,7 +23,9 @@ function UserDashboard() {
 			<button onClick={(e) => navigate('/choose-service')}>
 				Book Appointment
 			</button>
-			<button>View Appointments</button>
+			<button onClick={(e) => navigate('/user/appointments')}>
+				View Appointments
+			</button>
 			<button
 				onClick={(e) => {
 					signOut(auth)

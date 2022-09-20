@@ -10,6 +10,7 @@ const whitelist = [
 	'http://localhost:3000',
 	'http://localhost:5000',
 	'https://kleankingeasyschedule.herokuapp.com',
+	'https://online-easy-schedule-production.up.railway.app/',
 ];
 
 const corsOptions = {

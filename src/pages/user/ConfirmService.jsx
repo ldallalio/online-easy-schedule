@@ -12,7 +12,7 @@ function ConfirmService() {
 
 	useEffect(() => {
 		isLoggedIn();
-		getServices();
+		getServices().then(() => setIsLoading(false));
 	}, []);
 	const auth = getAuth();
 
@@ -27,31 +27,17 @@ function ConfirmService() {
 	const appointmentId = location.state.serviceId;
 
 	let services = [];
-	async function getServices() {
+
+	const getServices = async () => {
 		let url = `${process.env.REACT_APP_API_URL}api/${auth.currentUser.uid}/appointments/${appointmentId}`;
 		await fetch(url)
 			.then((res) => res.text())
 			.then((res) => {
 				data = JSON.parse(res);
 				setAllServices(data);
+				console.log(data);
 			});
-		setIsLoading(false);
-	}
-
-	let userId = allServices.userId,
-		serviceI = allServices.serviceId,
-		firstName = allServices.firstName,
-		lastName = allServices.lastName,
-		email = allServices.email,
-		phoneNumber = allServices.phoneNumber,
-		service = allServices.service,
-		date = allServices.date,
-		time = allServices.time,
-		street = allServices.street,
-		city = allServices.city,
-		state = allServices.state,
-		zipcode = allServices.zipcode,
-		moreInfo = allServices.moreInfo;
+	};
 
 	if (isLoading) {
 		return (
@@ -61,6 +47,20 @@ function ConfirmService() {
 			</div>
 		);
 	} else {
+		let userId = allServices.userId;
+		let serviceI = allServices.serviceId;
+		let firstName = allServices.firstName;
+		let lastName = allServices.lastName;
+		let email = allServices.email;
+		let phoneNumber = allServices.phoneNumber;
+		let service = allServices.service;
+		let date = allServices.date;
+		let time = allServices.time;
+		let street = allServices.street;
+		let city = allServices.city;
+		let state = allServices.state;
+		let zipcode = allServices.zipcode;
+		let moreInfo = allServices.moreInfo;
 		return (
 			<div className='dashContainer'>
 				<div className='containerHeader'>Klean King</div>
