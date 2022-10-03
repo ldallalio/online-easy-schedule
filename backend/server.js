@@ -111,7 +111,7 @@ app.post(`/api/:userId/appointments`, function (req, res) {
 		})
 		.then(() => {
 			ejs.renderFile(
-				__dirname + "/views/email/signUp.ejs",
+				__dirname + "./views/email/signup.ejs",
 				function (err, data) {
 					if (err) {
 						console.log(err);
