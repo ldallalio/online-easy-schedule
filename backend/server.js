@@ -110,28 +110,25 @@ app.post(`/api/:userId/appointments`, function (req, res) {
 			db.collection("testCol").insertOne(JSON.parse(data));
 		})
 		.then(() => {
-			ejs.renderFile(
-				__dirname + "./views/email/signup.ejs",
-				function (err, data) {
-					if (err) {
-						console.log(err);
-					} else {
-						const mailOptions = {
-							from: "logandallalio@gmail.com",
-							to: "logan@dallalioweb.dev",
-							subject: "Account Activated",
-							html: data,
-						};
-						transporter.sendMail(mailOptions, function (error, info) {
-							if (error) {
-								console.log(error);
-							} else {
-								console.log("Email sent: " + info.response);
-							}
-						});
-					}
-				},
-			);
+			ejs.renderFile("/views/email/signup.ejs", function (err, data) {
+				if (err) {
+					console.log(err);
+				} else {
+					const mailOptions = {
+						from: "logandallalio@gmail.com",
+						to: "logan@dallalioweb.dev",
+						subject: "Account Activated",
+						html: data,
+					};
+					transporter.sendMail(mailOptions, function (error, info) {
+						if (error) {
+							console.log(error);
+						} else {
+							console.log("Email sent: " + info.response);
+						}
+					});
+				}
+			});
 		});
 });
 //DELETE USER APPOINTMENT
