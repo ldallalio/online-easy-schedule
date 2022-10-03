@@ -1,38 +1,30 @@
-import React, { useEffect, useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { getAuth } from "firebase/auth";
+import Card from "../../components/AppointmentCard";
 function ViewAppointments() {
 	const navigate = useNavigate();
-	const getAllAppointments = async () => {
-		fetch();
+	useEffect(() => {
+		isLoggedIn();
+	}, []);
+	const auth = getAuth();
+
+	const isLoggedIn = async () => {
+		if (!auth.currentUser) {
+			console.log("no user");
+			navigate("/");
+		} else {
+			return;
+		}
 	};
+
 	return (
 		<div className='dashContainer'>
 			<div className='containerHeader'>Klean King</div>
 			<div className='viewAppointments'>
-				<div className='appointmentCard'>
-					<table>
-						<thead>
-							<td>Service</td>
-							<td>When</td>
-							<td>Where</td>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Air Ducts</td>
-								<td>10:00 AM</td>
-								<td>123 Apple Street</td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td>Vidalia, LA</td>
-							</tr>
-						</tbody>
-					</table>
-					<button>Cancel</button>
-				</div>
+				<Card />
 			</div>
-			<button onClick={() => navigate('/dashboard')}>Back</button>
+			<button onClick={() => navigate("/dashboard")}>Back</button>
 		</div>
 	);
 }
