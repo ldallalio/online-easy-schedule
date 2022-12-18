@@ -25,7 +25,7 @@ body {
 	justify-content: center;
 }
 
-.loginContainer form > * {
+.loginContainer form>* {
 	margin-top: 2em;
 }
 
@@ -39,6 +39,7 @@ body {
 	width: 370px;
 	margin-top: 1em;
 }
+
 .loginContainer form {
 	display: flex;
 	flex-flow: column wrap;
@@ -48,7 +49,7 @@ body {
 	align-items: center;
 }
 
-.loginContainer form > *,
+.loginContainer form>*,
 .loginContainer form button {
 	/* box-shadow: 1px 5px 10px 0px rgba(0, 0, 0, 0.522); */
 	border: solid 1px lightgray !important;
@@ -104,8 +105,8 @@ body {
 	align-items: center;
 }
 
-.dashContainer > *,
-.dashContainer form > * {
+.dashContainer>*,
+.dashContainer form>* {
 	margin-bottom: 1.2em;
 }
 
@@ -130,6 +131,7 @@ select {
 	background-color: white;
 	border: solid 1px lightgray;
 }
+
 .dashContainer button:hover {
 	border: solid 1px lightpink;
 }
@@ -143,22 +145,25 @@ select {
 	font-size: 18px;
 }
 
-.dashContainer form > input {
+.dashContainer form>input {
 	border: solid 1px lightgray;
 }
 
 #chooseService button:hover {
 	border: solid 1px lightpink;
 }
+
 #service,
 #time {
 	width: 392px !important;
 	height: 44px !important;
 	font-weight: 300;
 }
+
 #chooseService {
 	margin-top: -30px;
 }
+
 #chooseService div {
 	display: flex;
 	justify-content: center;
@@ -166,7 +171,7 @@ select {
 	flex-direction: column;
 }
 
-#chooseService div > * {
+#chooseService div>* {
 	margin-bottom: 15px;
 }
 
@@ -189,31 +194,47 @@ textarea {
 .appointmentCard {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	width: 400px;
+	gap: 1em;
 	padding: 10px;
 	box-shadow: 7px 7px 35px -8px rgba(0, 0, 0, 0.365);
 	border-radius: 10px;
 	margin-bottom: 1.6em;
 }
-.appointmentCard table thead > td {
+
+.cardContent {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-auto-columns: auto;
+	gap: 1em;
+	text-align: center;
+}
+
+.bold {
+	font-weight: 800;
+	font-size: large;
+}
+
+/* .appointmentCard table thead>td {
 	padding-bottom: 0.3em !important;
 }
 
 .appointmentCard table {
 	text-align: center;
 	padding-top: 1em;
-}
+} */
+
 .appointmentCard button {
 	margin: 20px 0px 10px 0px;
 }
 
-.appointmentCard thead td {
+/* .appointmentCard thead td {
 	text-align: center;
 	font-weight: 800;
 	padding: 0 !important;
 }
+
 .appointmentCard table tr td {
 	border-top: 0.8em solid transparent;
-	border-right: 1.2em solid transparent;
+	border-right: 1.2em solid transparent; 
 }
+ */
