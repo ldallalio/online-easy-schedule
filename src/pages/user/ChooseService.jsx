@@ -57,35 +57,34 @@ function ChooseService() {
       userId,
       serviceId,
     };
+	  console.log(formIDs);
     const checkValues = async () => {
       let sum = 0;
       Object.values(formIDs).forEach((Id) => {
-        if (Id) {
-
-        } else {
+		  console.log(Id);
+        if (!Id) {
           sum += 1;
         }
-      });
-      if (sum > 0) {
-      	alert('PLEASE FILL OUT ALL FIELDS');
-      } else {
-        await sendData(formIDs);
-      }
+	  });
+		 if (sum > 0) {
+        alert('PLEASE FILL OUT ALL FIELDS');
+		   } else {
+			   await sendData(formIDs);
+        navigate('/book-service', { state: { serviceId } });
+		   }
     };
     await checkValues();
-
-    // Save to Database
-    navigate('/book-service', { state: { serviceId } });
   };
 
-  const nextClick = (e) => {
+  const nextClick = async (e) => {
 	  e.preventDefault();
 	  const inputValues = document.getElementsByTagName('input');
 	  console.log(inputValues.value);
 	  const checkValues = async () => {
       let sum = 0;
-      Object.values(inputValues).forEach((Id) => {
-        if (Id) {
+		  Object.values(inputValues).forEach((Id) => {
+		  console.log(Id);
+        if (Id.value) {
 
         } else {
           sum += 1;
@@ -93,21 +92,20 @@ function ChooseService() {
       });
       if (sum > 0) {
       	alert('PLEASE FILL OUT ALL FIELDS');
-      } else {
-        const { id } = e.target;
-        if (+id === 1) {
-          document.getElementsByTagName('div')[3].classList.add('hidden');
-          document.getElementsByTagName('div')[4].classList.remove('hidden');
-        } else if (+id === 2) {
-          document.getElementsByTagName('div')[4].classList.add('hidden');
-          document.getElementsByTagName('div')[5].classList.remove('hidden');
-        } else if (+id === 3) {
-          document.getElementsByTagName('div')[5].classList.add('hidden');
-          document.getElementsByTagName('div')[3].classList.remove('hidden');
-        }
-      }
-    };
-    checkValues();
+	  }
+	  };
+	   const { id } = e.target;
+    if (+id === 1) {
+      document.getElementsByTagName('div')[3].classList.add('hidden');
+      document.getElementsByTagName('div')[4].classList.remove('hidden');
+    } else if (+id === 2) {
+      document.getElementsByTagName('div')[4].classList.add('hidden');
+      document.getElementsByTagName('div')[5].classList.remove('hidden');
+    } else if (+id === 3) {
+    //   await checkValues();
+      document.getElementsByTagName('div')[5].classList.add('hidden');
+      document.getElementsByTagName('div')[3].classList.remove('hidden');
+    }
   };
 
   return (

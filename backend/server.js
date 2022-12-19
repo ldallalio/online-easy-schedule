@@ -9,6 +9,8 @@ const port = process.env.PORT || 5000;
 const path = require('path');
 const ejs = require('ejs');
 
+app.use(express.static('public'));
+
 app.set('view engine', 'ejs');
 const cors = require('cors');
 // const signUp = ;
@@ -52,7 +54,7 @@ const uri = process.env.MONGO_URI;
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 app.get('/preview', (req, res) => {
-  res.render('email/signup.ejs');
+  res.render('email/signup.ejs', { name: 'Logan' });
 });
 // GET USER APPOINTMENTS
 app.get('/api/:userId/appointments', (req, res) => {
@@ -99,8 +101,12 @@ app.get('/api/:userId/appointments/:appointmentId', (req, res) => {
 app.post('/api/:userId/appointments', (req, res) => {
   // console.log(res.json());
   const data = JSON.stringify(req.body);
-  // console.log(data);
   res.send(data);
+  const myData = JSON.stringify(data);
+
+  const {
+    firstName, lastName, street, state, city, zipcode, time, service,
+  } = data;
   // save info to database
   MongoClient.connect(uri)
     .then((client) => {
@@ -116,7 +122,10 @@ app.post('/api/:userId/appointments', (req, res) => {
     .then(() => {
       ejs.renderFile(
         `${__dirname}/views/email/signup.ejs`,
-        (err, data) => {
+        {
+          data: JSON.parse(data),
+        },
+        (err, ejsData) => {
           if (err) {
             console.log(err);
           } else {
@@ -124,7 +133,7 @@ app.post('/api/:userId/appointments', (req, res) => {
               from: 'logandallalio@gmail.com',
               to: 'logan@dallalioweb.dev',
               subject: 'Appointment',
-              html: data,
+              html: ejsData,
             };
             transporter.sendMail(mailOptions, (error, info) => {
               if (error) {
@@ -153,8 +162,8 @@ app.put('/api/:userId/appointments/:appointmentId', (req, res) => {
       appointment.then((i) => {
         x = i;
         res.send(x);
-	  })
-		 .then(() => {
+      })
+        .then(() => {
           ejs.renderFile(
             `${__dirname}/views/email/signup.ejs`,
             (err, data) => {

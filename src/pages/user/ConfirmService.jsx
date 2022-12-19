@@ -35,7 +35,7 @@ function ConfirmService() {
       .then((res) => {
         data = JSON.parse(res);
         setAllServices(data);
-        console.log(data);
+        // console.log(data);
       });
   };
 

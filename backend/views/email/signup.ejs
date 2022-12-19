@@ -126,7 +126,7 @@ img.g-img + div {
 	background: #ffffff;
 }
 .bg_light{
-	background: #fafafa;
+	background: #ffffff;
 }
 .bg_black{
 	background: #000000;
@@ -207,7 +207,7 @@ table{
 }
 
 .hero .text{
-	color: rgba(0,0,0,.3);
+	color: rgba(52, 52, 52, 0.793);
 }
 .hero .text h2{
 	color: #000;
@@ -242,7 +242,7 @@ table{
 	font-size: 13px;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	color: rgba(0,0,0,.4);
+	color: rgba(0, 0, 0, 0.965);
 	position: relative;
 }
 .heading-section .subheading::after{
@@ -258,7 +258,7 @@ table{
 }
 
 .heading-section-white{
-	color: rgba(255,255,255,.8);
+	color: rgb(9, 7, 7);
 }
 .heading-section-white h2{
 	font-family: 
@@ -274,7 +274,7 @@ table{
 	font-size: 13px;
 	text-transform: uppercase;
 	letter-spacing: 2px;
-	color: rgba(255,255,255,.4);
+	color: rgb(0, 0, 0);
 }
 
 
@@ -289,7 +289,7 @@ ul.social li{
 /*FOOTER*/
 
 .footer{
-	border-top: 1px solid rgba(0,0,0,.05);
+	border-top: 1px solid rgba(255, 0, 0, 0.736);
 	color: rgba(0,0,0,.5);
 }
 .footer .heading{
@@ -308,6 +308,18 @@ ul.social li{
 	color: rgba(0,0,0,1);
 }
 
+.gridContainer{
+	display:grid;
+	grid-template-columns: auto auto;
+	grid-template-rows: auto auto auto auto ;
+	row-gap: 1em;
+}
+
+.bold{
+	font-size:16px;
+	font-weight: 800;
+	color:black;
+}
 
 @media screen and (max-width: 500px) {
 
@@ -320,8 +332,10 @@ ul.social li{
 
 </head>
 
-<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f1f1f1;">
-	<center style="width: 100%; background-color: #f1f1f1;">
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #f2f2f2;">
+
+
+	<center style="width: 100%; height:100vh; background-color: #d7d7d7;">
     <div style="display: none; font-size: 1px;max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
       &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
     </div>
@@ -333,7 +347,7 @@ ul.social li{
           	<table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
           		<tr>
           			<td class="logo" style="text-align: center;">
-			            <h1><a href="#">Klean King</a></h1>
+			            <!-- <h1><a href="#">Klean King</a></h1> -->
 			          </td>
           		</tr>
           	</table>
@@ -341,7 +355,7 @@ ul.social li{
 	      </tr><!-- end tr -->
 	      <tr>
           <td valign="middle" class="hero bg_white" style="padding: 3em 0 2em 0;">
-            <img src="images/email.png" alt="" style="width: 300px; max-width: 600px; height: auto; margin: auto; display: block;">
+            <img src="/images/KleanKingLogo.png" alt="" style="width: 300px; max-width: 600px; height: auto; margin: auto; display: block;">
           </td>
 	      </tr><!-- end tr -->
 				<tr>
@@ -355,7 +369,30 @@ ul.social li{
             				<!-- <p><a href="#" class="btn btn-primary">Yes! Subscribe Me</a></p> -->
             			</div>
             		</td>
+					
             	</tr>
+				<tr>
+					<td>
+						<div class="text" style="padding: 0 2.5em; text-align: center;">
+							<div class="gridContainer">
+								<div class="gridItem bold">Name</div>
+								<div class="gridItem"><%= data.firstName  %> <%= data.lastName %> </div>
+								<div class="gridItem bold">Service</div>
+								<div class="gridItem"><%= data.service %> </div>
+								<div class="gridItem bold">When</div>
+								<div class="gridItem"><%= data.time %> </div>
+								<div class="gridItem bold">Where</div>
+								<div class="gridItem">
+									<div><%= data.street %> </div>
+									<div><%= data.city %> </div>
+									<div><%= data.state %> </div>
+									<div><%= data.zipcode %> </div>
+								</div>
+								
+							</div>
+						</div>
+					</td>
+				</tr>
             </table>
           </td>
 	      </tr><!-- end tr -->
