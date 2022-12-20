@@ -45,8 +45,8 @@ const transporter = nodemailer.createTransport({
 // app.use(cors(corsOptions));
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const { error } = require('console');
-const { sign } = require('crypto');
+// const { error } = require('console');
+// const { sign } = require('crypto');
 
 const uri = process.env.MONGO_URI;
 
