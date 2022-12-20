@@ -48,7 +48,7 @@ function AppointmentCard() {
   };
 
   const getServices = async () => {
-    const url = `${process.env.REACT_APP_API_URL}api/${auth.currentUser.uid}/appointments/`;
+    const url = `${process.env.REACT_APP_API_URL}api/${auth.currentUser.uid}/appointments`;
     await fetch(url)
       .then((res) => res.text())
       .then((res) => {
