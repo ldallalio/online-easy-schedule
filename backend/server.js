@@ -54,7 +54,7 @@ const uri = process.env.MONGO_URI;
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(bodyparser.json());
 app.get('/preview', (req, res) => {
-  res.render('email/signup.ejs', { name: 'Logan' });
+  res.render('email/cancel.ejs', { name: 'Logan' });
 });
 // GET USER APPOINTMENTS
 app.get('/api/:userId/appointments', (req, res) => {
@@ -132,7 +132,7 @@ app.post('/api/:userId/appointments', (req, res) => {
             const mailOptions = {
               from: 'logandallalio@gmail.com',
               to: 'logan@dallalioweb.dev',
-              subject: 'Appointment',
+              subject: 'Appointment Confirmed',
               html: ejsData,
             };
             transporter.sendMail(mailOptions, (error, info) => {
@@ -165,7 +165,7 @@ app.put('/api/:userId/appointments/:appointmentId', (req, res) => {
       })
         .then(() => {
           ejs.renderFile(
-            `${__dirname}/views/email/signup.ejs`,
+            `${__dirname}/views/email/cancel.ejs`,
             (err, data) => {
               if (err) {
                 console.log(err);
