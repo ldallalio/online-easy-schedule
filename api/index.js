@@ -1,18 +1,18 @@
 const bodyparser = require('body-parser');
 const express = require('express');
-require('dotenv').config();
+// require('dotenv').config();
 
 const app = express();
 const nodemailer = require('nodemailer');
 
-const port = process.env.PORT || 5000;
+// const port = process.env.PORT || 5000;
 const path = require('path');
 const ejs = require('ejs');
 
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
-const cors = require('cors');
+// const cors = require('cors');
 // const signUp = ;
 
 const whitelist = [
@@ -30,19 +30,19 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-const corsOptions = {
-    origin(origin, callback) {
-        if (!origin || whitelist.indexOf(origin) !== -1) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+// const corsOptions = {
+//     origin(origin, callback) {
+//         if (!origin || whitelist.indexOf(origin) !== -1) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error('Not allowed by CORS'));
+//         }
+//     },
 
-    credentials: true,
-};
+//     credentials: true,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const { error } = require('console');
