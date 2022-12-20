@@ -12,14 +12,16 @@ const ejs = require('ejs');
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
-// const cors = require('cors');
+const cors = require('cors');
 // const signUp = ;
 
 const whitelist = [
     'http://localhost:3000',
     'http://localhost:5000',
-    'https://kleankingeasyschedule.herokuapp.com',
-    'https://online-easy-schedule-production.up.railway.app/',
+    'https://online-easy-schedule-dg3p2b1xp-ldallalio.vercel.app',
+    'https://online-easy-schedule.app',
+    'https://online-easy-schedule.vercel.app',
+
 ];
 console.log(process.env.REACT_APP_EMAIL_KEY);
 const transporter = nodemailer.createTransport({
@@ -30,19 +32,19 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-// const corsOptions = {
-//     origin(origin, callback) {
-//         if (!origin || whitelist.indexOf(origin) !== -1) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Not allowed by CORS'));
-//         }
-//     },
+const corsOptions = {
+    origin(origin, callback) {
+        if (!origin || whitelist.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
 
-//     credentials: true,
-// };
+    credentials: true,
+};
 
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 // const { error } = require('console');
