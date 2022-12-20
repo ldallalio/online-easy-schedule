@@ -13,36 +13,36 @@ app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
-module.exports = (req, res) => {
-    // set header first to allow request or origin domain (value can be different)
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, OPTIONS, DELETE');
+// module.exports = (req, res) => {
+//     // set header first to allow request or origin domain (value can be different)
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//     res.setHeader('Access-Control-Allow-Credentials', true);
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, OPTIONS, DELETE');
 
-    // ---- other code
+//     // ---- other code
 
-    // Preflight CORS handler
-    if (req.method === 'OPTIONS') {
-        return res.status(200).json(({
-            body: 'OK',
-        }));
-    }
-};
-const cors = require('cors');
-// const signUp = ;
+//     // Preflight CORS handler
+//     if (req.method === 'OPTIONS') {
+//         return res.status(200).json(({
+//             body: 'OK',
+//         }));
+//     }
+// };
+// const cors = require('cors');
+// // const signUp = ;
 
-const whitelist = [
-    'http://localhost:3000',
-    'http://localhost:5000',
-    'https://online-easy-schedule-dg3p2b1xp-ldallalio.vercel.app',
-    'https://online-easy-schedule.app',
-    'https://online-easy-schedule.vercel.app',
-    '*.vercel.app/*',
-    'https://**.vercel.app/**',
+// const whitelist = [
+//     'http://localhost:3000',
+//     'http://localhost:5000',
+//     'https://online-easy-schedule-dg3p2b1xp-ldallalio.vercel.app',
+//     'https://online-easy-schedule.app',
+//     'https://online-easy-schedule.vercel.app',
+//     '*.vercel.app/*',
+//     'https://**.vercel.app/**',
 
-];
-console.log(process.env.REACT_APP_EMAIL_KEY);
+// ];
+// console.log(process.env.REACT_APP_EMAIL_KEY);
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -63,7 +63,7 @@ const transporter = nodemailer.createTransport({
 //     credentials: true,
 // };
 
-app.use(cors());
+// app.use(cors());
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 // const { error } = require('console');
