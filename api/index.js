@@ -12,18 +12,19 @@ const ejs = require('ejs');
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
-// const cors = require('cors');
+const cors = require('cors');
 // const signUp = ;
 
-// const whitelist = [
-//     'http://localhost:3000',
-//     'http://localhost:5000',
-//     'https://online-easy-schedule-dg3p2b1xp-ldallalio.vercel.app',
-//     'https://online-easy-schedule.app',
-//     'https://online-easy-schedule.vercel.app',
-//     'https://*.vercel.app',
+const whitelist = [
+    'http://localhost:3000',
+    'http://localhost:5000',
+    'https://online-easy-schedule-dg3p2b1xp-ldallalio.vercel.app',
+    'https://online-easy-schedule.app',
+    'https://online-easy-schedule.vercel.app',
+    '*.vercel.app/*',
+    'https://**.vercel.app/**',
 
-// ];
+];
 console.log(process.env.REACT_APP_EMAIL_KEY);
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -45,7 +46,7 @@ const transporter = nodemailer.createTransport({
 //     credentials: true,
 // };
 
-// app.use(cors(corsOptions));
+app.use(cors());
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 // const { error } = require('console');
