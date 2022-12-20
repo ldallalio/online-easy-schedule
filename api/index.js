@@ -21,6 +21,7 @@ const whitelist = [
     'https://online-easy-schedule-dg3p2b1xp-ldallalio.vercel.app',
     'https://online-easy-schedule.app',
     'https://online-easy-schedule.vercel.app',
+    'https://*.vercel.app',
 
 ];
 console.log(process.env.REACT_APP_EMAIL_KEY);
