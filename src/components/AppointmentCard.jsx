@@ -33,10 +33,30 @@ function AppointmentCard() {
 
     // request options
     const options = {
+      method: 'GET',
+      body: JSON.stringify(await { id }),
+      headers: {
+        'content-type': 'application/json',
+      },
+    };
+    // send POST request
+    await fetch(url, options)
+      .then((res) => res.text())
+      .then((res) => {
+
+      });
+  };
+  const deleteData = async (id) => {
+    console.log(userId);
+    const url = `${process.env.REACT_APP_API_URL}api/${userId}/appointments/${id}`;
+    // post body data
+
+    // request options
+    const options = {
       method: 'PUT',
       body: JSON.stringify(await { id }),
       headers: {
-        'Content-Type': 'application/json',
+        'content-type': 'application/json',
       },
     };
     // send POST request
@@ -61,7 +81,7 @@ function AppointmentCard() {
     const id = e.target.attributes[0].value;
     // console.log(id);
     setIsLoading(true);
-    await sendData(await id);
+    await deleteData(await id);
     navigate('/dashboard');
   };
 
