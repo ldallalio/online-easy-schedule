@@ -25,7 +25,7 @@ function AppointmentCard() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [data]);
   const sendData = async (id) => {
     console.log(userId);
     const url = `${process.env.REACT_APP_API_URL}api/${userId}/appointments/${id}`;
