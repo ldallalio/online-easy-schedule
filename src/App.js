@@ -13,12 +13,12 @@ function App() {
 		<BrowserRouter>
 			<UserProvider>
 				<Routes>
-					<Route path='/' element={<Login />} />
-					<Route path='/sign-up' element={<SignUp />} />
-					<Route path='/dashboard' element={<UserDashboard />} />
-					<Route path='/choose-service' element={<ChooseService />} />
-					<Route path='/book-service' element={<ConfirmService />} />
-					<Route path='/user/appointments' element={<ViewAppointments />} />
+					<Route path="/" element={<Login />} />
+					<Route path="/sign-up" element={<SignUp />} />
+					<Route path="/dashboard" element={<UserDashboard />} />
+					<Route path="/choose-service" element={<ChooseService />} />
+					<Route path="/book-service" element={<ConfirmService />} />
+					<Route path="/user/appointments" element={<ViewAppointments />} />
 				</Routes>
 			</UserProvider>
 		</BrowserRouter>
