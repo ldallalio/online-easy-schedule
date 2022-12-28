@@ -8,19 +8,44 @@ function Login() {
   const navigate = useNavigate();
   const [pass, setPass] = useState('');
   const [email, setEmail] = useState('');
+  const [isAdmin, setIsAdmin] = useState(false);
+  const sendData = async (id) => {
+    console.log(userId);
+    const url = `${process.env.REACT_APP_API_URL}api/${userId}/appointments/${id}`;
+    // post body data
+
+    // request options
+    const options = {
+      method: 'GET',
+      body: JSON.stringify(await { id }),
+      headers: {
+        'content-type': 'application/json',
+      },
+    };
+    // send POST request
+    await fetch(url, options)
+      .then((res) => res.text())
+      .then((res) => {
+
+      });
+  };
 
   const logInWithEmailAndPassword = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, pass);
+      const userId = auth.currentUser.uid;
+      if (userId) {
+        console.log('blah blah blah');
+      }
       navigate('/dashboard');
     } catch (err) {
       console.error(err);
       alert(err.message);
     }
   };
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    logInWithEmailAndPassword();
+    await logInWithEmailAndPassword();
   };
 
   return (

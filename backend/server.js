@@ -21,7 +21,6 @@ const whitelist = [
   'https://kleankingeasyschedule.herokuapp.com',
   'https://online-easy-schedule-production.up.railway.app/',
 ];
-console.log(process.env.REACT_APP_EMAIL_KEY);
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -56,6 +55,57 @@ app.use(bodyparser.json());
 app.get('/preview', (req, res) => {
   res.render('email/cancel.ejs', { name: 'Logan' });
 });
+
+// ? Users
+
+// Creating Single User
+app.post('/api/:userId', (req, res) => {
+  const data = req.body;
+  console.log('🚀 ~ file: server.js:65 ~ app.post ~ data', data);
+  // const {
+  //   firstName, lastName, street, state, city, zipcode, time, service,
+  // } = data;
+  // save info to database
+  // MongoClient.connect(uri)
+  //   .then((client) => {
+  //     console.log('Database Connected with API');
+
+  //     // database name
+  //     const db = client.db('testDB');
+
+  //     // collection name
+  //     // db.createCollection('testCol');
+  //     db.collection('testCol').insertOne(JSON.parse(data));
+  //   })
+  //   .then(() => {
+  //     ejs.renderFile(
+  //       `${__dirname}/views/email/signup.ejs`,
+  //       {
+  //         data: JSON.parse(data),
+  //       },
+  //       (err, ejsData) => {
+  //         if (err) {
+  //           console.log(err);
+  //         } else {
+  //           const mailOptions = {
+  //             from: 'logandallalio@gmail.com',
+  //             to: 'logan@dallalioweb.dev',
+  //             subject: 'Appointment Confirmed',
+  //             html: ejsData,
+  //           };
+  //           transporter.sendMail(mailOptions, (error, info) => {
+  //             if (error) {
+  //               console.log(error);
+  //             } else {
+  //               console.log(`Email sent: ${info.response}`);
+  //             }
+  //           });
+  //         }
+  //       },
+  //     );
+  //   });
+});
+
 // GET USER APPOINTMENTS
 app.get('/api/:userId/appointments', (req, res) => {
   MongoClient.connect(uri).then((client) => {
@@ -195,6 +245,14 @@ app.put('/api/:userId/appointments/:appointmentId', (req, res) => {
     // collection name
     // db.createCollection('testCol');
   });
+});
+
+// ? Admin Section
+
+// Get Single Admin
+app.get('/api/admin/:userId', (req, res) => {
+  console.log(req.params);
+  res.send('Hello World');
 });
 
 if (process.env.NODE_ENV === 'production') {
