@@ -44,11 +44,10 @@ function SignUp() {
           await fetch(url, options)
             .then((res) => res.text())
             .then((res) => {
-              console.log(res);
+
             });
 		  };
         await sendData();
-        navigate('/');
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -56,6 +55,7 @@ function SignUp() {
         alert(errorMessage);
         // ..
       });
+    navigate('/');
   };
   return (
     <div className="loginContainer">

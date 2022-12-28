@@ -9,24 +9,26 @@ function Login() {
   const [pass, setPass] = useState('');
   const [email, setEmail] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
-  const sendData = async (id) => {
-    console.log(userId);
-    const url = `${process.env.REACT_APP_API_URL}api/${userId}/appointments/${id}`;
-    // post body data
 
+  const sendData = async (userId) => {
+    const url = `${process.env.REACT_APP_API_URL}api/admin/${userId}`;
     // request options
     const options = {
       method: 'GET',
-      body: JSON.stringify(await { id }),
       headers: {
         'content-type': 'application/json',
       },
     };
-    // send POST request
+    // GET request
     await fetch(url, options)
       .then((res) => res.text())
       .then((res) => {
-
+        const admin = JSON.parse(res);
+        if (admin.isAdmin) {
+          navigate('/admin');
+        } else {
+          navigate('/dashboard');
+        }
       });
   };
 
@@ -34,10 +36,7 @@ function Login() {
     try {
       await signInWithEmailAndPassword(auth, email, pass);
       const userId = auth.currentUser.uid;
-      if (userId) {
-        console.log('blah blah blah');
-      }
-      navigate('/dashboard');
+      await sendData(userId);
     } catch (err) {
       console.error(err);
       alert(err.message);
