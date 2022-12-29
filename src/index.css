@@ -238,3 +238,37 @@ textarea {
 	border-right: 1.2em solid transparent; 
 }
  */
+
+
+/* ? Admin Dashboard */
+#adminView {
+	display: flex;
+	position: absolute;
+	justify-items: center;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	margin: 0 !important;
+}
+
+#adminContent {
+	display: flex;
+	/* margin: 0; */
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	background-color: lightblue;
+
+}
+
+#adminContent h2 {
+	text-emphasis: none;
+	text-align: center;
+}
+
+.adminNav {
+	display: flex;
+	width: 100vw;
+	height: 110px;
+	background-color: aliceblue;
+}
